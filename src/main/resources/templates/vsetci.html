@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vsetci</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<div class="container-fluid text-center">
+    <div><h2>Vitajte</h2> </div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/zamestnanci/novy}">Pridaj noveho zamestnanca</a>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table class="table table-bordered ">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each = "zam: ${list}">
+                <tr>
+                    <td>[[${zam.id}]]</td>
+                    <td>[[${zam.name}]]</td>
+                    <td>[[${zam.age}]]</td>
+                    <td>[[${zam.date}]]</td>
+                    <td>
+                        <a class="h4 m-2" th:href="@{'/zamestnanci/edit'+${zam.id}}">Zmen</a>
+                        <a class="h4 m-2" th:href="@{'/zamestnanci/delete'+${zam.id}}">Vymaz</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
