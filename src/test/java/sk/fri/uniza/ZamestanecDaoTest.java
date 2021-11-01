@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import sk.fri.uniza.repository.IRepository;
 import sk.fri.uniza.model.Zamestnanec;
+import sk.fri.uniza.repository.IRepository;
 
-import java.util.Date;
 import java.util.Optional;
 
 
@@ -25,7 +24,7 @@ class ZamestanecDaoTest {
 
     @Test
     void pridaj() {
-        Zamestnanec zamestnanec = new Zamestnanec("Michael Grey",20);
+        Zamestnanec zamestnanec = new Zamestnanec("Michael Grey", 20);
         Zamestnanec zamestnanec1 = repo.save(zamestnanec);
         Assertions.assertThat(zamestnanec1).isNotNull();
         org.junit.jupiter.api.Assertions.assertTrue(repo.existsById(zamestnanec.getId()));
@@ -44,8 +43,9 @@ class ZamestanecDaoTest {
         }
         System.out.println("polozka s takymto id neexistuje v db");
     }
+
     @Test
-    void testList(){
+    void testList() {
         Iterable<Zamestnanec> vsetci = repo.findAll();
         Assertions.assertThat(vsetci).hasSizeGreaterThan(0);
     }
