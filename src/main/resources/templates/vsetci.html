@@ -16,8 +16,12 @@
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
     </div>
+<!--    upozornujuca sprava ked sa zamestatanec s danym id nenajde-->
     <div th:if="${exp}" class="alert alert-danger text-center">
         [[${exp}]]
+    </div>
+    <div th:if="${sprava}" class="alert alert-success text-center">
+        [[${sprava}]]
     </div>
 
     <div>
@@ -40,7 +44,7 @@
                     <td>[[${zam.date}]]</td>
                     <td>
                         <a class="h4 m-2" th:href="@{'/zamestnanci/edit/'+${zam.id}}">Zmen</a>
-                        <a class="h4 m-2" th:href="@{'/zamestnanci/delete'+${zam.id}}">Vymaz</a>
+                        <a class="h4 m-2" th:href="@{'/zamestnanci/delete/'+${zam.id}}">Vymaz</a>
                     </td>
                 </tr>
             </th:block>

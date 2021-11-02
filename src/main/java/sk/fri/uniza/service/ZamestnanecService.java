@@ -28,5 +28,11 @@ public class ZamestnanecService {
         return repo.getById(id);
     }
 
+    public void vymazZamestnanca(int id) throws ZamestnanecNotFoundExcption{
+        if (!repo.existsById(id)){
+            throw new ZamestnanecNotFoundExcption("zamestananec s id:"+id+" sa nenasiel");
+        }
+        repo.deleteById(id);
+    }
 
 }

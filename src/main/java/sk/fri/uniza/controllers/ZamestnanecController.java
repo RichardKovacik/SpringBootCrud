@@ -49,4 +49,15 @@ public class ZamestnanecController {
         }
         return "redirect:/zamestnanci";
     }
+
+    @GetMapping("/zamestnanci/delete/{id}")
+    public String odstranenieZam(@PathVariable("id") int id, RedirectAttributes ra) {
+        try {
+            service.vymazZamestnanca(id);
+        } catch (ZamestnanecNotFoundExcption e) {
+            ra.addFlashAttribute("exp", e.getMessage());
+        }
+        ra.addFlashAttribute("sprava", "Zamestananec bol uspesne odstraneny");
+        return "redirect:/zamestnanci";
+    }
 }
