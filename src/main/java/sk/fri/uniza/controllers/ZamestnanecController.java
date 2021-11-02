@@ -54,10 +54,10 @@ public class ZamestnanecController {
     public String odstranenieZam(@PathVariable("id") int id, RedirectAttributes ra) {
         try {
             service.vymazZamestnanca(id);
+            ra.addFlashAttribute("sprava", "Zamestananec bol uspesne odstraneny");
         } catch (ZamestnanecNotFoundExcption e) {
             ra.addFlashAttribute("exp", e.getMessage());
         }
-        ra.addFlashAttribute("sprava", "Zamestananec bol uspesne odstraneny");
         return "redirect:/zamestnanci";
     }
 }
