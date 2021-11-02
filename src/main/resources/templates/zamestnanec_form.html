@@ -2,24 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pridanie noveho</title>
+    <title>[[${title}]]</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container-fluid">
-    <div class="text-center"><h2>Pridanie noveho zamestnanca</h2></div>
+    <div class="text-center"><h2>[[${title}]]</h2></div>
 
     <form th:action="@{/zamestnanci/uloz}" method="post" th:object="${zam}"
     style="max-width: 500px;margin: 0 auto">
+
+        <input type="hidden" th:field="*{id}">
+
         <div class="border border-secondary rounded p-3">
 <!--            first row-->
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Meno:</label>
                 <div class="col-sm-8">
                     <label>
-                        <input type="text" th:field ="*{name}" class="form-control"
-                               required minlength="5" maxlength="20"/>
+                        <input  type="text"  th:field ="*{name}" class="form-control"
+                                required minlength="3" maxlength="20"/>
                     </label>
+<!--                    pattern=[A-Za-z] -->
                 </div>
                 </div>
 <!--                second row-->
